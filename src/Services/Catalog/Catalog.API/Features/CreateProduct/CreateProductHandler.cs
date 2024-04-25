@@ -1,12 +1,29 @@
-﻿using Shared.CQRS;
+﻿using Catalog.API.Models;
+using Marten;
+using Shared.CQRS;
 
 namespace Catalog.API.Features.CreateProduct;
 
-internal class CreateProductCommandHandler : ICommandHandler<CreateProductCommand, CreateProductResult>
+internal class CreateProductCommandHandler(IDocumentSession session) : ICommandHandler<CreateProductCommand, CreateProductResult>
 {
-    public Task<CreateProductResult> Handle(CreateProductCommand request, CancellationToken cancellationToken)
+    public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        // Create product entity from command
+        var product = new Product
+        {
+            Name = command.Name,
+            Category = command.Category,
+            Description = command.Description,
+            ImageFile = command.ImageFile,
+            Price = command.Price,
+        };
+
+        // Save to database
+        session.Store(product);
+        await session.SaveChangesAsync(cancellationToken);
+
+        // Return result
+        return new CreateProductResult(product.Id);
     }
 }
 
