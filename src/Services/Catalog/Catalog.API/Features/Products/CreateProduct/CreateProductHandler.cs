@@ -1,8 +1,7 @@
 ﻿using Catalog.API.Models;
-using Marten;
 using Shared.CQRS;
 
-namespace Catalog.API.Features.CreateProduct;
+namespace Catalog.API.Features.Products.CreateProduct;
 
 internal class CreateProductCommandHandler(IDocumentSession session) : ICommandHandler<CreateProductCommand, CreateProductResult>
 {

@@ -1,6 +1,6 @@
 ﻿using Shared.CQRS;
 
-namespace Catalog.API.Features.CreateProduct;
+namespace Catalog.API.Features.Products.CreateProduct;
 
 public class CreateProductEndpoint : ICarterModule
 {
@@ -13,6 +13,7 @@ public class CreateProductEndpoint : ICarterModule
             var result = await mediator.Send(command);
 
             var response = result.Adapt<CreateProductResponse>();
+
             return Results.Created($"/products/{response.Id}", response);
         })
             .WithName("CreateProduct")
