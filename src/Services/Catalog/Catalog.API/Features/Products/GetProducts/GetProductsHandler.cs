@@ -5,7 +5,7 @@ namespace Catalog.API.Features.Products.GetProducts;
 
 internal class GetProductsQueryHandler(IDocumentSession session) : IQueryHandler<GetProductsQuery, GetProductsResult>
 {
-    public async Task<GetProductsResult> Handle(GetProductsQuery request, CancellationToken cancellationToken)
+    public async Task<GetProductsResult> Handle(GetProductsQuery query, CancellationToken cancellationToken)
     {
         var products = await session.Query<Product>().ToListAsync(cancellationToken);
 
