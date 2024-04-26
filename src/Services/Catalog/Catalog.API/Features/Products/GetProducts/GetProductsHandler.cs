@@ -1,7 +1,4 @@
-﻿using Catalog.API.Models;
-using Shared.CQRS;
-
-namespace Catalog.API.Features.Products.GetProducts;
+﻿namespace Catalog.API.Features.Products.GetProducts;
 
 internal class GetProductsQueryHandler(IDocumentSession session) : IQueryHandler<GetProductsQuery, GetProductsResult>
 {

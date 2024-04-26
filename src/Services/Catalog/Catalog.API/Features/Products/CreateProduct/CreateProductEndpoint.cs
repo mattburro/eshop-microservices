@@ -1,6 +1,4 @@
-﻿using Shared.CQRS;
-
-namespace Catalog.API.Features.Products.CreateProduct;
+﻿namespace Catalog.API.Features.Products.CreateProduct;
 
 public class CreateProductEndpoint : ICarterModule
 {

@@ -1,7 +1,4 @@
-﻿using Catalog.API.Models;
-using Shared.CQRS;
-
-namespace Catalog.API.Features.Products.CreateProduct;
+﻿namespace Catalog.API.Features.Products.CreateProduct;
 
 internal class CreateProductCommandHandler(IDocumentSession session) : ICommandHandler<CreateProductCommand, CreateProductResult>
 {
@@ -32,5 +29,16 @@ public record class CreateProductCommand(
     string Description,
     string ImageFile,
     decimal Price) : ICommand<CreateProductResult>;
+
+public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
+{
+    public CreateProductCommandValidator()
+    {
+        RuleFor(c => c.Name).NotEmpty().WithMessage("Name is required");
+        RuleFor(c => c.Category).NotEmpty().WithMessage("Category is required");
+        RuleFor(c => c.ImageFile).NotEmpty().WithMessage("ImageFile is required");
+        RuleFor(c => c.Price).GreaterThan(0).WithMessage("Price must be greater than 0");
+    }
+}
 
 public record class CreateProductResult(Guid Id);

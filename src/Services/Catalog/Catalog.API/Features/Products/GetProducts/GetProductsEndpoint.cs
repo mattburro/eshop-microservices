@@ -1,6 +1,4 @@
-﻿using Catalog.API.Models;
-
-namespace Catalog.API.Features.Products.GetProducts;
+﻿namespace Catalog.API.Features.Products.GetProducts;
 
 public class GetProductsEndpoint : ICarterModule
 {

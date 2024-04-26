@@ -28,4 +28,13 @@ internal class UpdateProductCommandHandler(IDocumentSession session) : ICommandH
 public record UpdateProductCommand(Guid Id, string Name, List<string> Category, string Description, string ImageFile, decimal Price)
     : ICommand<UpdateProductResult>;
 
+public class UpdateProductCommandValidator : AbstractValidator<UpdateProductCommand>
+{
+    public UpdateProductCommandValidator()
+    {
+        RuleFor(c => c.Id).NotEmpty().WithMessage("Product ID is required");
+        RuleFor(c => c.Price).GreaterThan(0).WithMessage("Price must be greater than 0");
+    }
+}
+
 public record UpdateProductResult(Product Product);
