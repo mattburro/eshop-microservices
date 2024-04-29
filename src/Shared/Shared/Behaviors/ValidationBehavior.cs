@@ -4,10 +4,10 @@ using Shared.CQRS;
 
 namespace Shared.Behaviors;
 
-public class ValidationBehavior<TRequest, TResult>(IEnumerable<IValidator<TRequest>> validators)
-    : IPipelineBehavior<TRequest, TResult> where TRequest : ICommand<TResult>
+public class ValidationBehavior<TRequest, TResponse>(IEnumerable<IValidator<TRequest>> validators)
+    : IPipelineBehavior<TRequest, TResponse> where TRequest : ICommand<TResponse>
 {
-    public async Task<TResult> Handle(TRequest request, RequestHandlerDelegate<TResult> next, CancellationToken cancellationToken)
+    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
         var context = new ValidationContext<TRequest>(request);
 
