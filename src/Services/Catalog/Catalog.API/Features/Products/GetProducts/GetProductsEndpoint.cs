@@ -4,9 +4,11 @@ public class GetProductsEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/products", async (IMediator mediator) =>
+        app.MapGet("/products", async ([AsParameters] GetProductsRequest request ,IMediator mediator) =>
         {
-            var result = await mediator.Send(new GetProductsQuery());
+            var query = request.Adapt<GetProductsQuery>();
+
+            var result = await mediator.Send(query);
 
             var response = result.Adapt<GetsProductsResponse>();
 
@@ -18,5 +20,7 @@ public class GetProductsEndpoint : ICarterModule
             .ProducesProblem(StatusCodes.Status400BadRequest);
     }
 }
+
+public record GetProductsRequest(int? PageNumber = 1, int? PageSize = 10);
 
 public record GetsProductsResponse(IEnumerable<Product> Products);
