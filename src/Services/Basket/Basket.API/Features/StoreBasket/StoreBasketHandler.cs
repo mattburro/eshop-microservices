@@ -11,9 +11,9 @@ internal class StoreBasketCommandHandler : ICommandHandler<StoreBasketCommand, S
     }
 }
 
-public record StoreBasketCommand(ShoppingCart Cart) : ICommand<StoreBasketResult>;
+internal record StoreBasketCommand(ShoppingCart Cart) : ICommand<StoreBasketResult>;
 
-public class StoreBasketCommandValidator : AbstractValidator<StoreBasketCommand>
+internal class StoreBasketCommandValidator : AbstractValidator<StoreBasketCommand>
 {
     public StoreBasketCommandValidator()
     {
@@ -22,4 +22,4 @@ public class StoreBasketCommandValidator : AbstractValidator<StoreBasketCommand>
     }
 }
 
-public record StoreBasketResult(string Username);
+internal record StoreBasketResult(string Username);

@@ -22,6 +22,6 @@ public class StoreBasketEndpoint : ICarterModule
     }
 }
 
-public record StoreBasketRequest(ShoppingCart Cart);
+internal record StoreBasketRequest(ShoppingCart Cart);
 
-public record StoreBasketResponse(string Username);
+internal record StoreBasketResponse(string Username);
