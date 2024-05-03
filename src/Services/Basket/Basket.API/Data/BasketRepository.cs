@@ -6,21 +6,21 @@ public class BasketRepository(IDocumentSession session) : IBasketRepository
     {
         var basket = await session.LoadAsync<ShoppingCart>(username, cancellationToken);
 
-        return basket ?? throw new BasketNotFoundException();
+        return basket ?? throw new BasketNotFoundException(username);
     }
 
-    public async Task<ShoppingCart> StoreBasketAsync(ShoppingCart cart, CancellationToken cancellationToken = default)
+    public async Task<ShoppingCart> StoreBasketAsync(ShoppingCart basket, CancellationToken cancellationToken = default)
     {
-        session.Store(cart);
-        await session.SaveChangesAsync();
+        session.Store(basket);
+        await session.SaveChangesAsync(cancellationToken);
 
-        return cart;
+        return basket;
     }
 
     public async Task<bool> DeleteBasketAsync(string username, CancellationToken cancellationToken = default)
     {
         session.Delete<ShoppingCart>(username);
-        await session.SaveChangesAsync();
+        await session.SaveChangesAsync(cancellationToken);
 
         return true;
     }

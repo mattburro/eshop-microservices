@@ -1,12 +1,12 @@
 ﻿namespace Basket.API.Features.GetBasket;
 
-internal class GetBasketQueryHandler : IQueryHandler<GetBasketQuery, GetBasketResult>
+internal class GetBasketQueryHandler(IBasketRepository repository) : IQueryHandler<GetBasketQuery, GetBasketResult>
 {
     public async Task<GetBasketResult> Handle(GetBasketQuery query, CancellationToken cancellationToken)
     {
-        // TODO: Get basket from database
+        var basket = await repository.GetBasketAsync(query.Username, cancellationToken);
 
-        return new GetBasketResult(new ShoppingCart("test"));
+        return new GetBasketResult(basket);
     }
 }
 
