@@ -1,5 +1,4 @@
-﻿
-namespace Basket.API.Features.StoreBasket;
+﻿namespace Basket.API.Features.StoreBasket;
 
 public class StoreBasketEndpoint : ICarterModule
 {
