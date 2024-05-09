@@ -4,6 +4,7 @@ public class OrderItem : Entity<Guid>
 {
     internal OrderItem(Guid orderId, Guid productId, int quantity, decimal price)
     {
+        Id = Guid.NewGuid();
         OrderId = orderId;
         ProductId = productId;
         Quantity = quantity;
