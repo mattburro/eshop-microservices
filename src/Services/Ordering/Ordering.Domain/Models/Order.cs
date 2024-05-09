@@ -16,6 +16,7 @@ public class Order : Aggregate<Guid>
     public decimal TotalPrice
     {
         get => OrderItems.Sum(item => item.Price * item.Quantity);
+        private set { }
     }
 
     public static Order Create(Guid id, Guid customerId, string orderName, Address shippingAddress, Address billingAddress, Payment payment)
