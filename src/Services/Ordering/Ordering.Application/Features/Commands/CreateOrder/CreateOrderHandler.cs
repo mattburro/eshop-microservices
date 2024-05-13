@@ -4,14 +4,11 @@ public class CreateOrderCommandHandler(IApplicationDbContext dbContext) : IComma
 {
     public async Task<CreateOrderResult> Handle(CreateOrderCommand command, CancellationToken cancellationToken)
     {
-        // Create order entity from command
         var order = CreateNewOrder(command.Order);
 
-        // Save to database
         dbContext.Orders.Add(order);
         await dbContext.SaveChangesAsync(cancellationToken);
 
-        // Return result
         return new CreateOrderResult(order.Id);
     }
 
