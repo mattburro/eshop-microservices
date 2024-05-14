@@ -8,4 +8,6 @@ global using Ordering.Domain.Events;
 global using Shared.CQRS;
 
 global using MediatR;
+
+global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Logging;
