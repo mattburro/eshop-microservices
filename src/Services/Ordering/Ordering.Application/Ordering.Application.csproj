@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\EventHandlers\" />
     <Folder Include="Features\Queries\" />
   </ItemGroup>
 
