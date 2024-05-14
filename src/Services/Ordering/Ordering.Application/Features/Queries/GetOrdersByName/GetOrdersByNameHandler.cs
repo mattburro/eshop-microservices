@@ -1,5 +1,4 @@
-﻿using Ordering.Application.Extensions;
-using Ordering.Application.Features.Queries.GetOrderByName;
+﻿using Ordering.Application.Features.Queries.GetOrderByName;
 
 namespace Ordering.Application.Features.Queries.GetOrdersByName;
 
