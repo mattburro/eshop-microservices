@@ -6,7 +6,7 @@ public class UpdateOrder : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPut("/orders/{id}", async (UpdateOrderRequest request, IMediator mediator) =>
+        app.MapPut("/orders", async (UpdateOrderRequest request, IMediator mediator) =>
         {
             var command = request.Adapt<CreateOrderCommand>();
 
