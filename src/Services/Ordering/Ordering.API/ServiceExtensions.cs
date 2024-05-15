@@ -1,17 +1,19 @@
-﻿namespace Ordering.API;
+﻿using Carter;
+
+namespace Ordering.API;
 
 public static class ServiceExtensions
 {
     public static IServiceCollection AddApiServices(this IServiceCollection services)
     {
-        // AddCarter
+        services.AddCarter();
 
         return services;
     }
 
     public static WebApplication UseApiServices(this WebApplication app)
     {
-        // MapCarter
+        app.MapCarter();
 
         return app;
     }
