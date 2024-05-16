@@ -44,6 +44,6 @@ public class UpdateOrderCommandHandler(IApplicationDbContext dbContext) : IComma
             orderDto.Payment.Cvv,
             orderDto.Payment.PaymentMethod);
 
-        order.Update(order.OrderName, updatedShippingAddress, updatedBillingAddress, updatedPayment, order.Status);
+        order.Update(orderDto.OrderName, updatedShippingAddress, updatedBillingAddress, updatedPayment, orderDto.Status);
     }
 }

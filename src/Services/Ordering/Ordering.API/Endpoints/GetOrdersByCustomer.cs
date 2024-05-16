@@ -6,7 +6,7 @@ public class GetOrdersByCustomer : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/orders/{customerId}", async (Guid customerId, IMediator mediator) =>
+        app.MapGet("/orders/customer/{customerId}", async (Guid customerId, IMediator mediator) =>
         {
             var query = new GetOrdersByCustomerQuery(customerId);
 

@@ -1,4 +1,4 @@
-﻿using Ordering.Application.Features.Commands.CreateOrder;
+﻿using Ordering.Application.Features.Commands.UpdateOrder;
 
 namespace Ordering.API.Endpoints;
 
@@ -8,7 +8,7 @@ public class UpdateOrder : ICarterModule
     {
         app.MapPut("/orders", async (UpdateOrderRequest request, IMediator mediator) =>
         {
-            var command = request.Adapt<CreateOrderCommand>();
+            var command = request.Adapt<UpdateOrderCommand>();
 
             var result = await mediator.Send(command);
 
