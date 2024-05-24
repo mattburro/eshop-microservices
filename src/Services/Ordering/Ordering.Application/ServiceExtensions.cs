@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.FeatureManagement;
 using Shared.Behaviors;
 using Shared.Messaging.MassTransit;
 using System.Reflection;
@@ -17,6 +18,7 @@ public static class ServiceExtensions
             config.AddOpenBehavior(typeof(LoggingBehavior<,>));
         });
 
+        services.AddFeatureManagement();
         services.AddMessageBroker(configuration, Assembly.GetExecutingAssembly());
 
         return services;
